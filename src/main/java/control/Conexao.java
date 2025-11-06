@@ -17,8 +17,10 @@ public class Conexao {
             JOptionPane.showConfirmDialog(null, "Conexão bem sucedida");
             return c;
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Não Encontrado", "Houve uma Falha", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
