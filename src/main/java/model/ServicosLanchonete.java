@@ -128,7 +128,7 @@ public class ServicosLanchonete {
     }
     
     //arrumar o comando sql e o preparedstatement
-    public void atualizarDadosAluno(DadosFuncionarios dados) {
+    public void atualizarDadosFunc(DadosFuncionarios dados) {
         try {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
