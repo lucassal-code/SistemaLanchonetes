@@ -12,8 +12,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:head>
     <h:body>
         <form id = "FuncionariosCadastrados">
+            
             <h:outputLabel>Nome:</h:outputLabel>
-            <h:inputText value="#{cadastro}" <!-- falta terminar o cadastro no codigo fonte -->
+            <h:inputText value="#{cadastro.dadosFunc.nome}" /> <!-- não necessita de </h:inputText> para fechar pois não possui componentes filhos -->
+            
+            <h:outputLabel>CPF:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.cpf}" />
+            
+            <h:outputLabel>Telefone:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.telefone}" />
+            
+            <h:outputLabel>Endereço:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.endereco}" />
+            
+            <h:outputLabel>Cargo:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.cargo}" />
+            
+            <h:outputLabel>Salário:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.salario}" />
+            
+            <h:outputLabel>E-mail:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.email}" />
         </form>
         
         <div>TODO write content</div>
