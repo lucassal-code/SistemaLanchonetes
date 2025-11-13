@@ -15,24 +15,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             
             <h:outputLabel>Nome:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.nome}" /> <!-- não necessita de </h:inputText> para fechar pois não possui componentes filhos -->
+            <br/>
             
             <h:outputLabel>CPF:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.cpf}" />
+            <br/>
             
             <h:outputLabel>Telefone:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.telefone}" />
+            <br/>
             
             <h:outputLabel>Endereço:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.endereco}" />
+            <br/>
             
             <h:outputLabel>Cargo:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.cargo}" />
+            <br/>
             
             <h:outputLabel>Salário:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.salario}" />
+            <br/>
             
             <h:outputLabel>E-mail:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.email}" />
+            <br/>
+            
+            <h:commandButton value="Gravar Aluno" actionListener="#{cadastro.cadastrarFuncionario()}"/>
         </form>
         
         <div>TODO write content</div>

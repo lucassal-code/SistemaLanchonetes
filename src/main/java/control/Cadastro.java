@@ -7,6 +7,7 @@ import java.util.List;
 import model.DadosFuncionarios;
 import model.ServicosLanchonete;
 
+
 @Named
 @SessionScoped //arrumar o bean do cadastro
 public class Cadastro implements Serializable{
@@ -14,7 +15,13 @@ public class Cadastro implements Serializable{
     private DadosFuncionarios dadosFunc = new DadosFuncionarios();
     private List<DadosFuncionarios> listaFunc;
 
+    /*se esse construtor tivesse algum parametro, não seria intentificado como bean para ser usado no web
     public Cadastro(List<DadosFuncionarios> listaFunc) {
+        this.listaFunc = listaFunc;
+    }
+    */
+    
+    public Cadastro() {
         ServicosLanchonete s = new ServicosLanchonete();
         this.listaFunc = s.listaFuncionarios();
     }
