@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 
 public class ServicosLanchonete {
@@ -38,7 +37,6 @@ public class ServicosLanchonete {
             return 0;
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
@@ -69,7 +67,6 @@ public class ServicosLanchonete {
             return retorno;
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         return null;
@@ -89,7 +86,6 @@ public class ServicosLanchonete {
                 con.close();
                 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
                 System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
         }
@@ -121,7 +117,6 @@ public class ServicosLanchonete {
             con.close();
             return retorno;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -151,7 +146,6 @@ public class ServicosLanchonete {
             con.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
