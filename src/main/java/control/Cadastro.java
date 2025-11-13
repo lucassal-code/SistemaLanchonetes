@@ -11,6 +11,7 @@ import model.ServicosLanchonete;
 @Named
 @SessionScoped //arrumar o bean do cadastro
 public class Cadastro implements Serializable{
+    
     private String mensagem = "Bem vindo ao Cadastro de Funcionários!";
     private DadosFuncionarios dadosFunc = new DadosFuncionarios();
     private List<DadosFuncionarios> listaFunc;
@@ -26,28 +27,24 @@ public class Cadastro implements Serializable{
         this.listaFunc = s.listaFuncionarios();
     }
     
-    public void cadastrarFuncionario(){
+    public void cadastrarFuncionario() {
         ServicosLanchonete s = new ServicosLanchonete();
-        
-        /*descobrir depois o que fazer com o endereço, se será mais formulado ou so assim mesmo
-        //dadosFunc.setEndereco(dadosCEP.getEndereco()); dadosFunc.setCidade(dadosCEP.getCidade());
-        dadosFunc.setEstado(dadosCEP.getEstado());*/
-        
-        int id = this.dadosFunc.getId();
-        
-        if(this.dadosFunc.getId()!= 0){
+        int id;
+
+        if (this.dadosFunc.getId() != 0) {
             s.atualizarDadosFunc(dadosFunc);
-        }else{
+            id = dadosFunc.getId();
+            this.mensagem = "Funcionário " + id + " atualizado com SUCESSO!";
+        } else {
             id = s.cadastrarFuncionarios(dadosFunc);
+            this.mensagem = (id > 0)
+                ? "Funcionário " + id + " cadastrado com SUCESSO!"
+                : "Erro ao cadastrar funcionário.";
         }
-        
-        if(id > 0){
-            this.mensagem = "Funcionário "+id+" cadastrado com SUCESSO!";
-        }else{
-            this.mensagem = "Erro ao cadastrar funcionário";
-        }
+
         this.listaFunc = s.listaFuncionarios();
     }
+
 
     public String getMensagem() {
         return mensagem;

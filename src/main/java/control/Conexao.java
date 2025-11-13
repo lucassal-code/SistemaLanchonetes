@@ -5,22 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class Conexao {
     public Connection obterConexao(){
         try {
+            
+            Class.forName("org.postgresql.Driver");
             String url="jdbc:postgresql://10.90.24.54/ra0081805"; //200.18.128.54 para entrar fora da escola
             String usuario="ra0081805",senha="Art2009?";
-            Class.forName("org.postgresql.Driver");
+            
+            //Conexão bem sucedida
             Connection c = DriverManager.getConnection(url, usuario, senha);
-            JOptionPane.showConfirmDialog(null, "Conexão bem sucedida");
             return c;
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Não Encontrado", "Houve uma Falha", JOptionPane.ERROR_MESSAGE);
+            
+        } catch (SQLException | ClassNotFoundException ex) {
+            //houve um erro na conexão ou não foi encontrado
             Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

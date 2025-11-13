@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <form id = "FuncionariosCadastrados">
+        <h:form id = "FuncionariosCadastrados">
             
             <h:outputLabel>Nome:</h:outputLabel>
             <h:inputText value="#{cadastro.dadosFunc.nome}" /> <!-- não necessita de </h:inputText> para fechar pois não possui componentes filhos -->
@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <br/>
             
             <h:commandButton value="Gravar Aluno" actionListener="#{cadastro.cadastrarFuncionario()}"/>
-        </form>
+        </h:form>
         
         <div>TODO write content</div>
     </h:body>

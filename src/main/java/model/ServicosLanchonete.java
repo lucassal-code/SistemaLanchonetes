@@ -19,7 +19,7 @@ public class ServicosLanchonete {
         try {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
-            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?,?) RETURNING id";
+            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?) RETURNING id";
             PreparedStatement p = con.prepareStatement(SQL);
             
             p.setString(1, dados.getNome());
@@ -133,11 +133,11 @@ public class ServicosLanchonete {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
             String SQL = "UPDATE sistemalanchonete.funcionarios "
-                    + " set nome = ?, cpf = ?, telefone = ?,"
-                    + " endereço = ?, cargo = ?, salario = ?,"
-                    + " email = ? WHERE id = ?";
+                    + "SET nome = ?, cpf = ?, telefone = ?, "
+                    + "endereco = ?, cargo = ?, salario = ?, "
+                    + "email = ? WHERE id = ?";
             PreparedStatement p = con.prepareStatement(SQL);
-            
+
             p.setString(1, dados.getNome());
             p.setString(2, dados.getCpf());
             p.setString(3, dados.getTelefone());
@@ -145,12 +145,11 @@ public class ServicosLanchonete {
             p.setString(5, dados.getCargo());
             p.setDouble(6, dados.getSalario());
             p.setString(7, dados.getEmail());
-            
-            p.setInt(9, dados.getId());
-            
-            ResultSet r = p.executeQuery();
+            p.setInt(8, dados.getId());
+
+            p.executeUpdate();
             con.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
