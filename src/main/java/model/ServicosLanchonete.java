@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
+/*
+ALTER TABLE sua_tabela
+ALTER COLUMN sua_coluna
+ADD GENERATED ALWAYS AS IDENTITY;
+*/
 
 public class ServicosLanchonete {
     
@@ -30,17 +34,16 @@ public class ServicosLanchonete {
             p.setDouble(6, dados.getSalario());
             p.setString(7, dados.getEmail());
             
-            ResultSet r = p.executeQuery();
-            if (r.next()) {
-                return r.getInt("id");
-            }
-            con.close();
-            return 0;
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            int exeUpdate = p.executeUpdate();      //  ResultSet r = p.executeQuery();
+            con.close();                            //  if (r.next()) {
+            return exeUpdate;                       //      return r.getInt("id");
+                                                    //  }
+                                                    //  con.close();
+                                                    //  return 0;
+        } catch (SQLException ex) {                 //} catch (SQLException ex) {
+            System.err.println("Erro na conexão");  //  System.err.println("Erro na conexão");
+            ex.printStackTrace();                   //  Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }                                           //}
         return 0;
     }
     
@@ -69,7 +72,7 @@ public class ServicosLanchonete {
             return retorno;
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            System.err.println("Erro na conexão");
             System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         return null;
@@ -89,7 +92,7 @@ public class ServicosLanchonete {
                 con.close();
                 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                System.err.println("Erro na conexão");
                 System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
         }
@@ -121,7 +124,7 @@ public class ServicosLanchonete {
             con.close();
             return retorno;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -152,7 +155,7 @@ public class ServicosLanchonete {
             con.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
