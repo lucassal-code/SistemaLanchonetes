@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/*
+ALTER TABLE sua_tabela
+ALTER COLUMN sua_coluna
+ADD GENERATED ALWAYS AS IDENTITY;
+*/
 
 public class ServicosLanchonete {
     
@@ -18,7 +23,7 @@ public class ServicosLanchonete {
         try {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
-            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?) RETURNING id";
+            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?,?) RETURNING id";
             PreparedStatement p = con.prepareStatement(SQL);
             
             p.setString(1, dados.getNome());
@@ -29,16 +34,16 @@ public class ServicosLanchonete {
             p.setDouble(6, dados.getSalario());
             p.setString(7, dados.getEmail());
             
-            ResultSet r = p.executeQuery();
-            if (r.next()) {
-                return r.getInt("id");
-            }
-            con.close();
-            return 0;
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            int exeUpdate = p.executeUpdate();      //  ResultSet r = p.executeQuery();
+            con.close();                            //  if (r.next()) {
+            return exeUpdate;                       //      return r.getInt("id");
+                                                    //  }
+                                                    //  con.close();
+                                                    //  return 0;
+        } catch (SQLException ex) {                 //} catch (SQLException ex) {
+            System.err.println("Erro na conexão");  //  System.err.println("Erro na conexão");
+            ex.printStackTrace();                   //  Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }                                           //}
         return 0;
     }
     
@@ -67,6 +72,7 @@ public class ServicosLanchonete {
             return retorno;
             
         } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
             System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         return null;
@@ -86,6 +92,7 @@ public class ServicosLanchonete {
                 con.close();
                 
             } catch (SQLException ex) {
+                System.err.println("Erro na conexão");
                 System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             }
         }
@@ -117,6 +124,7 @@ public class ServicosLanchonete {
             con.close();
             return retorno;
         } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -128,11 +136,11 @@ public class ServicosLanchonete {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
             String SQL = "UPDATE sistemalanchonete.funcionarios "
-                    + "SET nome = ?, cpf = ?, telefone = ?, "
-                    + "endereco = ?, cargo = ?, salario = ?, "
-                    + "email = ? WHERE id = ?";
+                    + " set nome = ?, cpf = ?, telefone = ?,"
+                    + " endereço = ?, cargo = ?, salario = ?,"
+                    + " email = ? WHERE id = ?";
             PreparedStatement p = con.prepareStatement(SQL);
-
+            
             p.setString(1, dados.getNome());
             p.setString(2, dados.getCpf());
             p.setString(3, dados.getTelefone());
@@ -140,12 +148,14 @@ public class ServicosLanchonete {
             p.setString(5, dados.getCargo());
             p.setDouble(6, dados.getSalario());
             p.setString(7, dados.getEmail());
-            p.setInt(8, dados.getId());
-
-            p.executeUpdate();
+            
+            p.setInt(9, dados.getId());
+            
+            ResultSet r = p.executeQuery();
             con.close();
-
+            
         } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
