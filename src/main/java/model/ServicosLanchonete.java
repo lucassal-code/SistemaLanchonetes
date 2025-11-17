@@ -23,7 +23,7 @@ public class ServicosLanchonete {
         try {
             Conexao c = new Conexao();
             Connection con = c.obterConexao();
-            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?,?) RETURNING id";
+            String SQL = "INSERT INTO sistemalanchonete.funcionarios (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?) RETURNING id";
             PreparedStatement p = con.prepareStatement(SQL);
             
             p.setString(1, dados.getNome());
