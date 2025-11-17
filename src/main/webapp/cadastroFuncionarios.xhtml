@@ -45,6 +45,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <br/>
             
             <div>Lista de Funcionários:</div>
+            <h:dataTable value="#{cadastro.listaFunc}" var="FAtual" id="ListaFuncionarios">
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>NOME:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.nome}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>CPF:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.cpf}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>TELEFONE:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.telefone}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>ENDEREÇO:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.endereco}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>CARGO:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.cargo}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>SALÁRIO:</h:outputLabel></f:facet>
+                    <h:outputLabel>R$: #{FAtual.salario}</h:outputLabel>
+                </h:column>
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>EMAIL:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.email}</h:outputLabel>
+                </h:column>
+                
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>

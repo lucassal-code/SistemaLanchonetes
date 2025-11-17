@@ -9,22 +9,17 @@ import model.ServicosLanchonete;
 
 
 @Named
-@SessionScoped //arrumar o bean do cadastro
+@SessionScoped
 public class Cadastro implements Serializable{
     
     private String mensagem = "Bem vindo ao Cadastro de Funcionários!";
     private DadosFuncionarios dadosFunc = new DadosFuncionarios();
     private List<DadosFuncionarios> listaFunc;
-
-    /*se esse construtor tivesse algum parametro, não seria intentificado como bean para ser usado no web
-    public Cadastro(List<DadosFuncionarios> listaFunc) {
-        this.listaFunc = listaFunc;
-    }
-    */
     
-    public Cadastro() {
-        ServicosLanchonete s = new ServicosLanchonete();
-        this.listaFunc = s.listaFuncionarios();
+    //se esse construtor tivesse algum parametro, não seria identificado como bean para ser usado no web
+    public Cadastro() {                                     //public Cadastro(List<DadosFuncionarios> listaFunc) {
+        ServicosLanchonete s = new ServicosLanchonete();    //  this.listaFunc = listaFunc;
+        this.listaFunc = s.listaFuncionarios();             //}
     }
     
     public void cadastrarFuncionario() {

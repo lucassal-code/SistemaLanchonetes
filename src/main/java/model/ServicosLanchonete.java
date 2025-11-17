@@ -59,6 +59,7 @@ public class ServicosLanchonete {
             ResultSet r = p.executeQuery();
             while (r.next()) {
                     DadosFuncionarios dados = new DadosFuncionarios();
+                    
                     dados.setNome(r.getString("nome"));
                     dados.setCpf(r.getString("cpf"));
                     dados.setTelefone(r.getString("telefone"));
@@ -66,6 +67,36 @@ public class ServicosLanchonete {
                     dados.setCargo(r.getString("cargo"));
                     dados.setSalario(r.getDouble("salario"));
                     dados.setEmail(r.getString("email"));
+                    
+                    retorno.add(dados);
+            }
+            con.close();
+            return retorno;
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return null;
+    }
+    
+    //listagem de pedidos
+    public List<DadosPedidos> listaPedidos(){
+        try {
+            List<DadosPedidos> retorno = new ArrayList<>();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.pedidos ORDER BY numpedido DESC";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            ResultSet r = p.executeQuery();
+            while (r.next()) {
+                    DadosPedidos dados = new DadosPedidos();
+                    
+                    dados.getNomeCliente(r.getString("nomecliente"));
+                    dados.getValorTotal(r.getDouble("valor"));
+                    dados.getInfoAdd(r.getString("infoadicionais"));
+                    
                     retorno.add(dados);
             }
             con.close();
