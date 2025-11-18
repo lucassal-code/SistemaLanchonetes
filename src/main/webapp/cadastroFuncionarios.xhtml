@@ -5,12 +5,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" >
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Cadastro de Funcionários</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
+        <h1>Cadastro de Funcionários</h1>
         <h:form id = "FuncionariosCadastrados">
             
             <h:outputLabel>Nome:</h:outputLabel>
@@ -44,7 +45,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:commandButton value="Gravar Funcionário" actionListener="#{cadastro.cadastrarFuncionario()}"/>
             <br/>
             
-            <div>Lista de Funcionários:</div>
+            <h2>Lista de Funcionários</h2>
+            <div>Listagem:</div>
             <h:dataTable value="#{cadastro.listaFunc}" var="FAtual" id="ListaFuncionarios">
                 
                 <h:column>
