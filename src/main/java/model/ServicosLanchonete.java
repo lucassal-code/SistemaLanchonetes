@@ -47,6 +47,35 @@ public class ServicosLanchonete {
         return 0;
     }
     
+    //controle de pedidos criados
+    public int criarPedidos(DadosPedidos dados){
+        try {
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "INSERT INTO sistemalanchonete.pedidos (nome, cpf, telefone, endereco, cargo, salario, email) VALUES (?,?,?,?,?,?,?) RETURNING id";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            p.setString(1, dados.getNome());
+            p.setString(2, dados.getCpf());
+            p.setString(3, dados.getTelefone()); //arrumar o sql e comandos da criação de pedidos
+            p.setString(4, dados.getEndereco());
+            p.setString(5, dados.getCargo());
+            p.setDouble(6, dados.getSalario());
+            p.setString(7, dados.getEmail());
+            
+            int exeUpdate = p.executeUpdate();      //  ResultSet r = p.executeQuery();
+            con.close();                            //  if (r.next()) {
+            return exeUpdate;                       //      return r.getInt("id");
+                                                    //  }
+                                                    //  con.close();
+                                                    //  return 0;
+        } catch (SQLException ex) {                 //} catch (SQLException ex) {
+            System.err.println("Erro na conexão");  //  System.err.println("Erro na conexão");
+            ex.printStackTrace();                   //  Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }                                           //}
+        return 0;
+    }
+    
     //listagem de funcionarios
     public List<DadosFuncionarios> listaFuncionarios(){
         try {
@@ -93,10 +122,10 @@ public class ServicosLanchonete {
             while (r.next()) {
                     DadosPedidos dados = new DadosPedidos();
                     
-                    dados.getNumPedido(r.getInt("numpedido"));
-                    dados.getNomeCliente(r.getString("nomecliente"));
-                    dados.getValorTotal(r.getDouble("valor"));
-                    dados.getInfoAdd(r.getString("infoadicionais"));
+                    dados.setNumPedido(r.getInt("numpedido"));
+                    dados.setNomeCliente(r.getString("nomecliente"));
+                    dados.setValorTotal(r.getDouble("valor"));
+                    dados.setInfoAdd(r.getString("infoadicionais"));
                     
                     retorno.add(dados);
             }
@@ -182,6 +211,32 @@ public class ServicosLanchonete {
             p.setString(7, dados.getEmail());
             
             p.setInt(9, dados.getId());
+            
+            ResultSet r = p.executeQuery();
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //acabar de arrumar o sql da atualização
+    public void atualizarDadosPedido(DadosPedidos dados) {
+        try {
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "UPDATE sistemalanchonete.pedidos "
+                    + " set nome = ?, cpf = ?, telefone = ?,"
+                    + " endereço = ?, cargo = ?, salario = ?,"
+                    + " email = ? WHERE id = ?";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            p.setString(1, dados.getNomeCliente());
+            p.setDouble(6, dados.getValorTotal());
+            p.setString(4, dados.getInfoAdd());    
+            
+            p.setInt(9, dados.getNumPedido());
             
             ResultSet r = p.executeQuery();
             con.close();

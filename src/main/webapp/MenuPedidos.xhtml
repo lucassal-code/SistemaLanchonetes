@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Menu de Manuseio de Pedidos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Menu de Pedidos</h1>
+        <h:form id = "MenuPeidos">
+            
+            <h:outputLabel>Nome do CLiente:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.cpf}" />
+            <br/>
+            
+            <h:outputLabel>Telefone:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.telefone}" />
+            <br/>
+            
+            <h:outputLabel>Endereço:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.endereco}" />
+            <br/>
+            
+            <h:outputLabel>Cargo:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.cargo}" />
+            <br/>
+            
+            <h:outputLabel>Salário:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.salario}" />
+            <br/>
+            
+            <h:outputLabel>E-mail:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadosFunc.email}" />
+            <br/>
+            
+            <h:commandButton value="Gravar Funcionário" actionListener="#{cadastro.cadastrarFuncionario()}"/>
+            <br/>
+        </h:form>
+        <div>TODO write content</div>
+    </h:body>
+</html>

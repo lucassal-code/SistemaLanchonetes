@@ -1,0 +1,174 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 24 de nov. de 2025, 13:48:59
+    Author     : 0081998
+*/
+
+/* Importação de uma fonte moderna e limpa do Google Fonts (opcional) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Reset Básico e Estilo de Corpo */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6; /* Fundo cinza claro */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal para centralizar o conteúdo */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fundo branco para o formulário */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Títulos */
+h1 {
+    color: #007bff; /* Azul primário */
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+h2.list-title {
+    color: #555;
+    margin-top: 40px;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+}
+
+/* Estilo do Formulário */
+.form-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os campos fiquem lado a lado se houver espaço */
+    gap: 20px; /* Espaço entre os grupos de formulário */
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    flex: 1 1 calc(33.333% - 20px); /* 3 colunas em telas grandes */
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+/* Estilo dos Labels */
+.form-group label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Estilo dos Inputs */
+input[type="text"], input[type="email"], input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Ações do Formulário (Botão) */
+.form-actions {
+    flex: 1 1 100%; /* Ocupa a largura total na linha */
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #28a745; /* Verde para ação de "Gravar" */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+/* Estilo da Tabela de Dados (h:dataTable) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Estilos de linha alternados para melhor leitura */
+.table-row-even {
+    background-color: #f9f9f9;
+}
+
+.table-row-odd {
+    background-color: #ffffff;
+}
+
+.data-table tr:hover {
+    background-color: #e0f7fa; /* Realça a linha ao passar o mouse */
+}
+
+.listagem-info {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Media Query para Responsividade */
+@media (max-width: 800px) {
+    .form-group {
+        flex: 1 1 calc(50% - 20px); /* 2 colunas em tablets */
+    }
+}
+
+@media (max-width: 550px) {
+    .form-group {
+        flex: 1 1 100%; /* 1 coluna em smartphones */
+        min-width: unset;
+    }
+    .container {
+        margin: 20px 10px;
+        padding: 10px;
+    }
+}

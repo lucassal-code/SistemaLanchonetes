@@ -6,7 +6,7 @@ public class DadosPedidos {
     private double valorTotal;
     
     //N° Pedido
-    public int getNumPedido(int aInt) {
+    public int getNumPedido() {
         return numPedido;
     }
 
@@ -15,7 +15,7 @@ public class DadosPedidos {
     }
     
     //Nome do Cliente
-    public String getNomeCliente(String string) {
+    public String getNomeCliente() {
         return nomeCliente;
     }
 
@@ -24,7 +24,7 @@ public class DadosPedidos {
     }
     
     //Informações Adicionais
-    public String getInfoAdd(String string) {
+    public String getInfoAdd() {
         return infoAdd;
     }
 
@@ -33,7 +33,7 @@ public class DadosPedidos {
     }
     
     //Valor Total
-    public double getValorTotal(double aDouble) {
+    public double getValorTotal() {
         return valorTotal;
     }
 
