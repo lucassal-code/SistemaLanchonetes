@@ -6,7 +6,7 @@ public class DadosPedidos {
     private double valorTotal;
     
     //N° Pedido
-    public int getNumPedido() {
+    public int getNumPedido(int aInt) {
         return numPedido;
     }
 

@@ -93,6 +93,7 @@ public class ServicosLanchonete {
             while (r.next()) {
                     DadosPedidos dados = new DadosPedidos();
                     
+                    dados.getNumPedido(r.getInt("numpedido"));
                     dados.getNomeCliente(r.getString("nomecliente"));
                     dados.getValorTotal(r.getDouble("valor"));
                     dados.getInfoAdd(r.getString("infoadicionais"));
