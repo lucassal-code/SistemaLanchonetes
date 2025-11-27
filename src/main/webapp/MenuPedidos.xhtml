@@ -12,11 +12,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:head>
     <h:body>
         <h1>Menu de Pedidos</h1>
-        <h:form id = "MenuPeidos">
+        <h:form id = "MenuPedidos">
             
-            <h:outputLabel>N°:</h:outputLabel>
-            <h:inputText value="#{pedidosController.dadosPed.numPedido}" />
-            <br/>
+            Selecione o item <!<!-- checar se ta dando certo -->
+            <input type="radio" name="cardapio" id="item1"></input>Item 1<br/>
+            <input type="radio" name="cardapio" id="item2"></input>Item 2
             
             <h:outputLabel>Nome do CLiente:</h:outputLabel>
             <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
@@ -32,7 +32,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             
             <h:commandButton value="Finalizar Pedido" actionListener="#{pedidosController.criarPedido()}"/>
             <br/>
+            
+            <div>Pedidos Ativos:</div>
+            <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="ListaProdutos">
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>N° </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.numPedido}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Nome do Cliente: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.nomeCliente}</h:outputLabel>
+                </h:column>
+                    
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Valor: </h:outputLabel></f:facet>
+                    <h:outputLabel>R$ #{PAtual.valorTotal}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Informações: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.infoAdd}</h:outputLabel>
+                </h:column>
+                
+            </h:dataTable>
         </h:form>
-        <div>TODO write content</div>
+        
     </h:body>
 </html>

@@ -24,11 +24,11 @@ public class PedidosController implements Serializable{
         ServicosLanchonete s = new ServicosLanchonete();
         int nP;
 
-        if (this.dadosPed.getNumPedido()!= 0) {
+        if(this.dadosPed.getNumPedido()!= 0) {
             s.atualizarDadosPedido(dadosPed);
             nP = dadosPed.getNumPedido();
             this.mensagem = "pedido " + nP + " atualizado com SUCESSO!";
-        } else {
+        }else{
             nP = s.criarPedidos(dadosPed); //provavel q posso so deletar tudo isso
             this.mensagem = (nP > 0)
                 ? "Pedido " + nP + " criado com SUCESSO!"

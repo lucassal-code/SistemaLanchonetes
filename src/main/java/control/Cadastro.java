@@ -26,11 +26,11 @@ public class Cadastro implements Serializable{
         ServicosLanchonete s = new ServicosLanchonete();
         int id;
 
-        if (this.dadosFunc.getId() != 0) {
+        if(this.dadosFunc.getId() != 0) {
             s.atualizarDadosFunc(dadosFunc);
             id = dadosFunc.getId();
             this.mensagem = "Funcionário " + id + " atualizado com SUCESSO!";
-        } else {
+        }else{
             id = s.cadastrarFuncionarios(dadosFunc);
             this.mensagem = (id > 0)
                 ? "Funcionário " + id + " cadastrado com SUCESSO!"
