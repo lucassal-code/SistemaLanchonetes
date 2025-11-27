@@ -14,15 +14,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h1>Menu de Pedidos</h1>
         <h:form id = "MenuPedidos">
             
-            Selecione o item <br/><!-- checar se ta dando certo -->
-            <input type="checkbox" id="item1" name="item1" value="item1"></input>
-            <!--<label for="item1">#{pedidosController.itemC.nome} - R$ #{pedidosController}</label><br/> arrumar depois -->
+            <h2>Cardápio</h2>
+            <h:dataTable value="#{pedidosController.cardapio}" var="ItemAtual" id="Cardápio">
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.getnItem()}</h:outputLabel> <!-- pode ser que o get esteja errado mas vale a pena testar-->
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.nome}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.preco}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.infoAdd}</h:outputLabel>
+                </h:column>
+            </h:dataTable>
+            <div/>
             
-            <input type="checkbox" id="item2" name="item2" value="item2"></input>
-            <label for="item2">Item 2</label><br/>
-            
-            <input type="checkbox" id="item3" name="item3" value="item3"></input>
-            <label for="item3">Item 3</label><br/>
+            <h3>Organização de Pedido</h3>
             
             <h:outputLabel>Nome do CLiente:</h:outputLabel>
             <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
@@ -37,9 +49,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <br/>
             
             <h:commandButton value="Finalizar Pedido" actionListener="#{pedidosController.criarPedido()}"/>
-            <br/>
+            <div/>
             
-            <div>Pedidos Ativos:</div>
+            <h4>Listagem de Pedidos</h4>
             <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="ListaProdutos">
                 
                 <h:column>
@@ -64,6 +76,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 
             </h:dataTable>
         </h:form>
-        
     </h:body>
 </html>
