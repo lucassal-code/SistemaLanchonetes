@@ -14,31 +14,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h1>Menu de Pedidos</h1>
         <h:form id = "MenuPeidos">
             
+            <h:outputLabel>N°:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.numPedido}" />
+            <br/>
+            
             <h:outputLabel>Nome do CLiente:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.cpf}" />
+            <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
             <br/>
             
-            <h:outputLabel>Telefone:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.telefone}" />
+            <h:outputLabel>Valor total:</h:outputLabel>
+            <h:inputText value="R$ #{pedidosController.dadosPed.valorTotal}" />
             <br/>
             
-            <h:outputLabel>Endereço:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.endereco}" />
+            <h:outputLabel>Infos Adicionais:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.infoAdd}" />
             <br/>
             
-            <h:outputLabel>Cargo:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.cargo}" />
-            <br/>
-            
-            <h:outputLabel>Salário:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.salario}" />
-            <br/>
-            
-            <h:outputLabel>E-mail:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadosFunc.email}" />
-            <br/>
-            
-            <h:commandButton value="Gravar Funcionário" actionListener="#{cadastro.cadastrarFuncionario()}"/>
+            <h:commandButton value="Finalizar Pedido" actionListener="#{pedidosController.criarPedido()}"/>
             <br/>
         </h:form>
         <div>TODO write content</div>

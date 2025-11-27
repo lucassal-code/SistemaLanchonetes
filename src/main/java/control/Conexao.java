@@ -12,7 +12,7 @@ public class Conexao {
     public Connection obterConexao(){
         try {
             Class.forName("org.postgresql.Driver");
-            String url="jdbc:postgresql://10.90.24.54/ra0081805"; //ip de casa 200.
+            String url="jdbc:postgresql://10.90.24.54/ra0081805"; //ip de casa 200.18.128.54
             String usuario="ra0081805",senha="Art2009?";
             
             Connection c = DriverManager.getConnection(url, usuario, senha);

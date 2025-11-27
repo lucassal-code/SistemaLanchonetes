@@ -31,10 +31,35 @@ public class PedidosController implements Serializable{
         } else {
             nP = s.criarPedidos(dadosPed); //provavel q posso so deletar tudo isso
             this.mensagem = (nP > 0)
-                ? "Funcionário " + nP + " cadastrado com SUCESSO!"
-                : "Erro ao cadastrar funcionário.";
+                ? "Pedido " + nP + " criado com SUCESSO!"
+                : "Erro ao elaborar pedido.";
         }
 
         this.listaPedidos = s.listaPedidos();
     }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public List<DadosPedidos> getListaPedidos() {
+        return listaPedidos;
+    }
+
+    public void setListaPedidos(List<DadosPedidos> listaPedidos) {
+        this.listaPedidos = listaPedidos;
+    }
+
+    public DadosPedidos getDadosPed() {
+        return dadosPed;
+    }
+
+    public void setDadosPed(DadosPedidos dadosPed) {
+        this.dadosPed = dadosPed;
+    }
+    
 }
