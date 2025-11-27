@@ -14,9 +14,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h1>Menu de Pedidos</h1>
         <h:form id = "MenuPedidos">
             
-            Selecione o item <!-- checar se ta dando certo -->
-            <input type="radio" name="cardapio" id="item1"></input>Item 1<br/>
-            <input type="radio" name="cardapio" id="item2"></input>Item 2<br/>
+            Selecione o item <br/><!-- checar se ta dando certo -->
+            <input type="checkbox" id="item1" name="item1" value="item1"></input>
+            <!--<label for="item1">#{pedidosController.itemC.nome} - R$ #{pedidosController}</label><br/> arrumar depois -->
+            
+            <input type="checkbox" id="item2" name="item2" value="item2"></input>
+            <label for="item2">Item 2</label><br/>
+            
+            <input type="checkbox" id="item3" name="item3" value="item3"></input>
+            <label for="item3">Item 3</label><br/>
             
             <h:outputLabel>Nome do CLiente:</h:outputLabel>
             <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />

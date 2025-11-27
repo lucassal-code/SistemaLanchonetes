@@ -243,4 +243,37 @@ public class ServicosLanchonete {
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    //-----------------------------------------------------------Sessão do Cardapio----------------------------------------------------------//
+    
+    //exibição do cardápio
+    public List<ItemCardapio> listagemCardapio(){
+        try {
+            List<ItemCardapio> retorno = new ArrayList<>();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.cardapio";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            ResultSet r = p.executeQuery();
+            while (r.next()) {
+                    ItemCardapio dados = new ItemCardapio();
+                    
+                    dados.setnItem(r.getInt("numeroitem"));
+                    dados.setNome(r.getString("nome"));
+                    dados.setPreco(r.getDouble("preco"));
+                    dados.setInfoAdd(r.getString("infoadicionais"));
+                    dados.setTipo(r.getString("tipo"));
+                    
+                    retorno.add(dados);
+            }
+            con.close();
+            return retorno;
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return null;
+    }
 }
