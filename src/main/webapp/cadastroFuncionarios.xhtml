@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:head>
         <title>Cadastro de Funcionários</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputStylesheet library="css" name="cadastro_func.css"/>
+        
     </h:head>
     <h:body>
         <h1>Cadastro de Funcionários</h1>
@@ -54,29 +54,53 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     <f:facet name="header"><h:outputLabel>NOME:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.nome}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>CPF:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.cpf}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>TELEFONE:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.telefone}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>ENDEREÇO:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.endereco}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>CARGO:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.cargo}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>SALÁRIO:</h:outputLabel></f:facet>
                     <h:outputLabel>R$: #{FAtual.salario}</h:outputLabel>
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header"><h:outputLabel>EMAIL:</h:outputLabel></f:facet>
                     <h:outputLabel>#{FAtual.email}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Alterar</h:outputLabel></f:facet>
+                    <h:commandLink actionListener="#{cadastro.alterarDados(FAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="alterarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'">
+                            <f:ajax execute="@this" render="FuncionariosCadastrados" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Deletar</h:outputLabel></f:facet>
+                    <h:commandLink actionListener="#{cadastro.apagarDados(FAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'">
+                            <f:ajax execute="@this" render="FuncionariosCadastrados" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
                 </h:column>
                 
             </h:dataTable>

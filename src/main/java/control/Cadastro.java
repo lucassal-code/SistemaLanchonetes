@@ -7,7 +7,6 @@ import java.util.List;
 import model.DadosFuncionarios;
 import model.ServicosLanchonete;
 
-
 @Named
 @SessionScoped
 public class Cadastro implements Serializable{
@@ -39,7 +38,20 @@ public class Cadastro implements Serializable{
 
         this.listaFunc = s.listaFuncionarios();
     }
-
+    
+    //atualiza os dados do funcionario
+    public void alterarDados(int porId){
+        ServicosLanchonete s = new ServicosLanchonete();
+        this.dadosFunc = s.consultarPorId(porId);
+        this.listaFunc = s.listaFuncionarios();
+    }
+    
+    //apaga o funcionario da tabela
+    public void apagarDados(int porId){
+        ServicosLanchonete s = new ServicosLanchonete();
+        s.deletarFuncionario(porId);
+        this.listaFunc = s.listaFuncionarios();
+    }
 
     public String getMensagem() {
         return mensagem;
