@@ -48,7 +48,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             
             <h2>Lista de Funcionários</h2>
             <div>Listagem:</div>
-            <h:dataTable value="#{cadastro.listaFunc}" var="FAtual" id="ListaFuncionarios">
+            <h:dataTable value="#{cadastro.listaFunc}" var="FAtual" id="listaFunc" >
                 
                 <h:column>
                     <f:facet name="header"><h:outputLabel>NOME:</h:outputLabel></f:facet>
@@ -85,23 +85,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     <h:outputLabel>#{FAtual.email}</h:outputLabel>
                 </h:column>
                 
-                <h:column>
-                    <f:facet name="header"><h:outputLabel>Alterar</h:outputLabel></f:facet>
-                    <h:commandLink actionListener="#{cadastro.alterarDados(FAtual.id)}" style="border: none;">
-                        <h:graphicImage library="images" name="alterarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'">
-                            <f:ajax execute="@this" render="FuncionariosCadastrados" event="click" />
+                <!--<h:column>
+                    <f:facet name="header"><h:outputLabel>Apagar</h:outputLabel> </f:facet>
+                    h:outputLabel>Apagar?</h:outputLabel
+                    <h:commandLink actionListener="# {cadastro.apagarDados(FAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'">
+                            <f:ajax execute="@this" render="listaFunc" event="click" />
                         </h:graphicImage>
                     </h:commandLink>
                 </h:column>
                 
-                <h:column>
-                    <f:facet name="header"><h:outputLabel>Deletar</h:outputLabel></f:facet>
-                    <h:commandLink actionListener="#{cadastro.apagarDados(FAtual.id)}" style="border: none;">
-                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'">
-                            <f:ajax execute="@this" render="FuncionariosCadastrados" event="click" />
-                        </h:graphicImage>
-                    </h:commandLink>
-                </h:column>
+                por algum motivo o botão não funciona, entao deixe para resolver depois-->
                 
             </h:dataTable>
         </h:form>

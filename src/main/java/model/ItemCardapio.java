@@ -4,6 +4,7 @@ public class ItemCardapio {
     private int nItem;
     private String nome, infoAdd, tipo;
     private double preco;
+    private boolean selecionado; //testando função de selecionar no cardápio
     
     //N° Item
     public int getnItem() {
@@ -48,5 +49,13 @@ public class ItemCardapio {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public boolean isSelecionado() {
+        return selecionado;
+    }
+
+    public void setSelecionado(boolean selecionado) {
+        this.selecionado = selecionado;
     }
 }

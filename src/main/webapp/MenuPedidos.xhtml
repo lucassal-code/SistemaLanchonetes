@@ -16,6 +16,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             
             <h2>Cardápio</h2>
             <h:dataTable value="#{pedidosController.cardapio}" var="ItemAtual" id="Cardápio">
+                
+                <h:column>
+                    <h:selectBooleanCheckbox value="#{ItemAtual.selecionado}"/>
+                </h:column>
+                
                 <h:column>
                     <h:outputLabel>#{ItemAtual.getnItem()}</h:outputLabel> <!-- pode ser que o get esteja errado mas vale a pena testar-->
                 </h:column>
@@ -31,7 +36,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:column>
                     <h:outputLabel>#{ItemAtual.infoAdd}</h:outputLabel>
                 </h:column>
+                
             </h:dataTable>
+            <h:commandButton value="Finalizar Pedido" action="#{pedidosController.finalizarPedido}" />
             <div/>
             
             <h3>Organização de Pedido</h3>

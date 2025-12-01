@@ -21,6 +21,7 @@ public class Cadastro implements Serializable{
         this.listaFunc = s.listaFuncionarios();             //}
     }
     
+    //serve para atualizar se tiver mesmo id ou adicionar novo funcionario
     public void cadastrarFuncionario() {
         ServicosLanchonete s = new ServicosLanchonete();
         int id;
@@ -36,13 +37,6 @@ public class Cadastro implements Serializable{
                 : "Erro ao cadastrar funcionário.";
         }
 
-        this.listaFunc = s.listaFuncionarios();
-    }
-    
-    //atualiza os dados do funcionario
-    public void alterarDados(int porId){
-        ServicosLanchonete s = new ServicosLanchonete();
-        this.dadosFunc = s.consultarPorId(porId);
         this.listaFunc = s.listaFuncionarios();
     }
     

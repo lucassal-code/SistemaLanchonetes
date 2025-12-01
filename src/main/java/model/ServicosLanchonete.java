@@ -84,21 +84,20 @@ public class ServicosLanchonete {
     
     //método para excluir funcionarios
     public void deletarFuncionario(int idFunc){
-        if(idFunc > 0){
-            try {
+        try {//if e o try tavam invertidos
+            if(idFunc > 0){
                 Conexao c = new Conexao();
                 Connection con = c.obterConexao();
                 String SQL = "DELETE FROM sistemalanchonete.funcionarios WHERE id=?";
                 PreparedStatement p = con.prepareStatement(SQL);
                 
                 p.setInt(1, idFunc);
-                p.execute();
+                p.executeUpdate();
                 con.close();
-                
-            } catch (SQLException ex) {
-                System.err.println("Erro na conexão");
-                System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-            }
+            } 
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
     
