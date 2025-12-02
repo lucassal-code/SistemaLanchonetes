@@ -48,20 +48,25 @@ public class PedidosController implements Serializable {
         this.listaPedidos = s.listaPedidos();
     }
 
-    // 👉 Novo método para coletar os itens selecionados no cardápio
-    public void finalizarPedido() {
-
-        // filtra itens marcados no checkbox
-        itensSelecionados = cardapio.stream()
-                .filter(ItemCardapio::isSelecionado)
-                .collect(Collectors.toList());
-
-        // Aqui você relaciona os itens com o pedido (se quiser):
-        // dadosPed.setItens(itensSelecionados); ← se sua classe tiver isso
-
-        this.mensagem = itensSelecionados.isEmpty()
+    //Novo método para coletar os itens selecionados no cardápio
+    public int finalizarPedido() {
+        int valorTotal = 0;
+        
+        //adicionando função para adicionar automaticamente o valor total da compra
+        for(ItemCardapio c : this.cardapio){
+            if(c.isSelecionado()){
+                this.itensSelecionados.add(c);
+                valorTotal += c.getPreco();
+            }
+        }
+        
+        //mensagem caso esteja vazio ou cheio
+        this.mensagem = this.itensSelecionados.isEmpty()
                 ? "Nenhum item selecionado!"
-                : itensSelecionados.size() + " itens selecionados no pedido.";
+                : this.itensSelecionados.size() + " itens selecionados no pedido.";
+        
+        //retorna o valor para ser adicionado no site
+        return valorTotal;
     }
 
     // GETTERS E SETTERS
