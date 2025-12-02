@@ -60,6 +60,10 @@ public class PedidosController implements Serializable {
             }
         }
         
+        /*this.itensSelecionados = this.cardapio.stream()
+                .filter(ItemCardapio::isSelecionado)
+                .collect(Collectors.toList());*/
+        
         //mensagem caso esteja vazio ou cheio
         this.mensagem = this.itensSelecionados.isEmpty()
                 ? "Nenhum item selecionado!"
