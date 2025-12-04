@@ -89,6 +89,14 @@ public class PedidosController implements Serializable {
                 : itensSelecionadosTemp.size() + " itens selecionados no pedido.";
         
     }
+    
+    //método para apagar pedidos
+    public void apagarPedido(int n){
+        ServicosLanchonete s = new ServicosLanchonete();
+        s.deletarPedido(n);
+        this.listaPedidos = s.listaPedidos();
+        this.mensagem="Pedido "+n+" removido";
+    }
 
     //mensagem
     public String getMensagem() {

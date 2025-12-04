@@ -60,7 +60,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <div/>
             
             <h4>Listagem de Pedidos</h4>
-            <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="ListaProdutos">
+            <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="listaProdutos">
                 
                 <h:column>
                     <f:facet name="header"><h:outputLabel>N° </h:outputLabel></f:facet>
@@ -80,6 +80,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:column>
                     <f:facet name="header"><h:outputLabel>Informações: </h:outputLabel></f:facet>
                     <h:outputLabel>#{PAtual.infoAdd}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{pedidosController.apagarPedido(PAtual.numPedido)}" style="border: none;">
+                        <h:graphicImage library="images" name="atualizar.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaProdutos" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
                 </h:column>
                 
             </h:dataTable>

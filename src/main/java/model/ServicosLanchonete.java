@@ -201,8 +201,8 @@ public class ServicosLanchonete {
             PreparedStatement p = con.prepareStatement(SQL);
             
             p.setString(1, dados.getNomeCliente());
-            p.setDouble(6, dados.getValorTotal());
-            p.setString(4, dados.getInfoAdd());    
+            p.setDouble(2, dados.getValorTotal());
+            p.setString(3, dados.getInfoAdd());    
             
             p.setInt(9, dados.getNumPedido());
             
@@ -212,6 +212,25 @@ public class ServicosLanchonete {
         } catch (SQLException ex) {
             System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //método para deletar pedidos
+    public void deletarPedido(int nP){
+        try {
+            if(nP > 0){
+                Conexao c = new Conexao();
+                Connection con = c.obterConexao();
+                String SQL = "DELETE FROM sistemalanchonete.pedidos WHERE numpedido=?";
+                PreparedStatement p = con.prepareStatement(SQL);
+                
+                p.setInt(1, nP);
+                p.executeUpdate();
+                con.close();
+            } 
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
     
