@@ -49,6 +49,17 @@ public class PedidosController implements Serializable {
         }
 
         this.listaPedidos = s.listaPedidos();
+
+        //limpa os dados após a criação do pedido
+        this.dadosPed = new DadosPedidos();
+
+        //desmarca os itens marcados no último pedido
+        for (ItemCardapio item : cardapio) {
+            item.setSelecionado(false);
+        }
+
+        //por fim, zera o valor total
+        this.valorTotal = 0;
     }
 
     //Novo método para coletar os itens selecionados no cardápio
@@ -64,7 +75,7 @@ public class PedidosController implements Serializable {
                 valTemp += c.getPreco();
                 this.dadosPed.setValorTotal(valTemp);//supostamente adiciona o valor corretamente
                 
-                valTemp = 0;
+                //valTemp = 0;
             }
         }
         
