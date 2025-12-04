@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Menu de Manuseio de Pedidos</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Menu de Pedidos</h1>
+        <h:form id = "MenuPedidos">
+            
+            <h2>Cardápio</h2>
+            <h:dataTable value="#{pedidosController.cardapio}" var="ItemAtual" id="Cardápio">
+                
+                <h:column>
+                    <h:selectBooleanCheckbox value="#{ItemAtual.selecionado}"/>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.getnItem()}</h:outputLabel> <!-- pode ser que o get esteja errado mas vale a pena testar-->
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.nome}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.preco}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel>#{ItemAtual.infoAdd}</h:outputLabel>
+                </h:column>
+                
+            </h:dataTable>
+            <h:commandButton value="Escolher Itens" action="#{pedidosController.finalizarPedido}" /> <!--não deveria ser um botão mas adicionado no preço-->
+            <div/>
+            
+            <h3>Organização de Pedido</h3>
+            
+            <h:outputLabel>Nome do CLiente:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
+            <br/>
+            
+            <h:outputLabel>Valor total:</h:outputLabel>
+            <h:outputLabel value="R$ #{pedidosController.dadosPed.valorTotal}" />
+            <!--tá funcionando porém ele não limpa após o cadastro, o valor não é cadastrado e continua aumentando após o pedido ser concluído-->
+            <br/>
+            
+            <h:outputLabel>Infos Adicionais:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.infoAdd}" />
+            <br/>
+            
+            <h:commandButton value="Finalizar Pedido" actionListener="#{pedidosController.criarPedido()}"/>
+            <div/>
+            
+            <h4>Listagem de Pedidos</h4>
+            <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="listaProdutos">
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>N° </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.numPedido}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Nome do Cliente: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.nomeCliente}</h:outputLabel>
+                </h:column>
+                    
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Valor: </h:outputLabel></f:facet>
+                    <h:outputLabel>R$ #{PAtual.valorTotal}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Informações: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.infoAdd}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{pedidosController.apagarPedido(PAtual.numPedido)}" style="border: none;">
+                        <h:graphicImage library="images" name="atualizar.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaProdutos" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

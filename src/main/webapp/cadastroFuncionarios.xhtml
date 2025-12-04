@@ -5,12 +5,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" >
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Cadastro de Funcionários</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/cad_func.css" />
+
     </h:head>
     <h:body>
+        <h1>Cadastro de Funcionários</h1>
+        <h:outputLabel style="color: red; size: 18px;">#{cadastro.mensagem}</h:outputLabel>
+        <br/><br/>
         <h:form id = "FuncionariosCadastrados">
             
             <h:outputLabel>Nome:</h:outputLabel>
@@ -44,7 +49,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:commandButton value="Gravar Funcionário" actionListener="#{cadastro.cadastrarFuncionario()}"/>
             <br/>
             
-            <div>Lista de Funcionários:</div>
+            <h2>Lista de Funcionários</h2>
+            <div>Listagem:</div>
+            <h:dataTable value="#{cadastro.listaFunc}" var="FAtual" id="listaFunc" >
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>NOME:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.nome}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>CPF:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.cpf}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>TELEFONE:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.telefone}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>ENDEREÇO:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.endereco}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>CARGO:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.cargo}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>SALÁRIO:</h:outputLabel></f:facet>
+                    <h:outputLabel>R$: #{FAtual.salario}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>EMAIL:</h:outputLabel></f:facet>
+                    <h:outputLabel>#{FAtual.email}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{cadastro.apagarDados(FAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <!-- jânio conseguiu arrumar o código, o problema tava no java onde não retornava o int do id -->
+                            <f:ajax execute="@this" render="listaFunc" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>
