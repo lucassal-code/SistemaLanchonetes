@@ -18,7 +18,7 @@ ADD GENERATED ALWAYS AS IDENTITY;
 
 public class ServicosLanchonete {
     
-    //-----------------------------------------------------------Sessão de Pedidos-----------------------------------------------------------//
+    //Sessão de Pedidos
     
     //cadastro de funcionarios para o banco de dados
     public int cadastrarFuncionarios(DadosFuncionarios dados){
@@ -44,8 +44,8 @@ public class ServicosLanchonete {
                                                     //  return 0;
         } catch (SQLException ex) {                 //} catch (SQLException ex) {
             System.err.println("Erro na conexão");  //  System.err.println("Erro na conexão");
-            ex.printStackTrace();                   //  Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
-        }                                           //}
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
         return 0;
     }
     
@@ -69,6 +69,9 @@ public class ServicosLanchonete {
                     dados.setCargo(r.getString("cargo"));
                     dados.setSalario(r.getDouble("salario"));
                     dados.setEmail(r.getString("email"));
+                    
+                    //tava faltando somente esse setId pra armazenar o id os funcionários
+                    dados.setId(r.getInt("id"));
                     
                     retorno.add(dados);
             }
@@ -101,39 +104,6 @@ public class ServicosLanchonete {
         }
     }
     
-    //permite pesquisar com base no Id do funcionario
-    public DadosFuncionarios consultarPorId(int idFunc) {
-        try {
-            DadosFuncionarios retorno = new DadosFuncionarios();
-            Conexao c = new Conexao();
-            Connection con = c.obterConexao();
-            String SQL = "SELECT * FROM sistemalanchonete.funcionarios WHERE id = ?";
-            PreparedStatement p = con.prepareStatement(SQL);
-            
-            p.setInt(1, idFunc);
-            ResultSet r = p.executeQuery();
-            
-            if (r.next()) {
-                retorno.setId(r.getInt("id"));
-                retorno.setNome(r.getString("nome"));
-                retorno.setCpf(r.getString("cpf"));
-                retorno.setTelefone(r.getString("telefone"));
-                retorno.setEndereco(r.getString("endereco"));
-                retorno.setCargo(r.getString("cargo"));
-                retorno.setSalario(r.getDouble("salario"));
-                retorno.setEmail(r.getString("email"));
-            }
-            
-            con.close();
-            return retorno;
-            
-        } catch (SQLException ex) {
-            System.err.println("Erro na conexão");
-            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
     //arrumar o comando sql e o preparedstatement
     public void atualizarDadosFunc(DadosFuncionarios dados) {
         try {
@@ -164,7 +134,9 @@ public class ServicosLanchonete {
         }
     }
     
-    //-----------------------------------------------------------Sessão de Pedidos-----------------------------------------------------------//
+    
+    
+    //Sessão de Pedidos
     
     //controle de pedidos criados
     public int criarPedidos(DadosPedidos dados){
@@ -184,7 +156,7 @@ public class ServicosLanchonete {
             
         } catch (SQLException ex) {
             System.err.println("Erro na conexão");
-            ex.printStackTrace();
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }                                           
         return 0;
     }
@@ -243,7 +215,9 @@ public class ServicosLanchonete {
         }
     }
     
-    //-----------------------------------------------------------Sessão do Cardapio----------------------------------------------------------//
+    
+    
+    //Sessão do Cardapio
     
     //exibição do cardápio
     public List<ItemCardapio> listagemCardapio(){

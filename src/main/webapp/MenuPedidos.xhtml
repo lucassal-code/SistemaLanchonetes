@@ -38,7 +38,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </h:column>
                 
             </h:dataTable>
-            <!--<h:commandButton value="Finalizar Pedido" action="# {pedidosController.finalizarPedido}" /> não deveria ser um botão mas adicionado no preço -->
+            <h:commandButton value="Escolher Itens" action="#{pedidosController.finalizarPedido}" /> <!--não deveria ser um botão mas adicionado no preço-->
             <div/>
             
             <h3>Organização de Pedido</h3>
@@ -47,9 +47,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
             <br/>
             
-            <h:outputLabel>Valor total:</h:outputLabel> <!-- Cannot invoke "java.util.List.isEmpty()" because "this.itensSelecionados" is null
-            arrumar o método depois -->
-            <h:outputLabel value="R$ #{pedidosController.finalizarPedido()}" /> <!-- o valor total deve so demonstrar o valor da soma dos itens selecionados -->
+            <h:outputLabel>Valor total:</h:outputLabel>
+            <h:outputLabel value="R$ #{pedidosController.dadosPed.valorTotal}" />
+            <!--tá funcionando porém ele não limpa após o cadastro, o valor não é cadastrado e continua aumentando após o pedido ser concluído-->
             <br/>
             
             <h:outputLabel>Infos Adicionais:</h:outputLabel>

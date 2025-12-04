@@ -45,28 +45,29 @@ public class Cadastro implements Serializable{
         ServicosLanchonete s = new ServicosLanchonete();
         s.deletarFuncionario(porId);
         this.listaFunc = s.listaFuncionarios();
+        this.mensagem="Funcionario "+porId+" apagado com sucesso!";
     }
 
+    //mensagem
     public String getMensagem() {
         return mensagem;
     }
-
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
 
+    //dados funcionário
     public DadosFuncionarios getDadosFunc() {
         return dadosFunc;
     }
-
     public void setDadosFunc(DadosFuncionarios dadosFunc) {
         this.dadosFunc = dadosFunc;
     }
 
+    //lista de funcionários
     public List<DadosFuncionarios> getListaFunc() {
         return listaFunc;
     }
-
     public void setListaFunc(List<DadosFuncionarios> listaFunc) {
         this.listaFunc = listaFunc;
     }
