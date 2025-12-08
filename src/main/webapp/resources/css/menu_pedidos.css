@@ -1,174 +1,147 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 24 de nov. de 2025, 13:48:59
-    Author     : 0081998
-*/
+/* ============================= */
+/*  BACKGROUND E LAYOUT GERAL    */
+/* ============================= */
 
-/* Importação de uma fonte moderna e limpa do Google Fonts (opcional) */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-/* Reset Básico e Estilo de Corpo */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f7f6; /* Fundo cinza claro */
-    color: #333;
-    line-height: 1.6;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('img/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(3px);
 }
 
-/* Container principal para centralizar o conteúdo */
-.container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff; /* Fundo branco para o formulário */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Títulos */
-h1 {
-    color: #007bff; /* Azul primário */
+h1, h2, h3, h4 {
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-    font-weight: 700;
-}
-
-h2.list-title {
-    color: #555;
-    margin-top: 40px;
-    border-left: 5px solid #007bff;
-    padding-left: 10px;
-}
-
-/* Estilo do Formulário */
-.form-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os campos fiquem lado a lado se houver espaço */
-    gap: 20px; /* Espaço entre os grupos de formulário */
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    margin-bottom: 30px;
-}
-
-.form-group {
-    flex: 1 1 calc(33.333% - 20px); /* 3 colunas em telas grandes */
-    display: flex;
-    flex-direction: column;
-    min-width: 250px;
-}
-
-/* Estilo dos Labels */
-.form-group label {
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-/* Estilo dos Inputs */
-input[type="text"], input[type="email"], input[type="number"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
-}
-
-input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-    outline: none;
-}
-
-/* Ações do Formulário (Botão) */
-.form-actions {
-    flex: 1 1 100%; /* Ocupa a largura total na linha */
-    margin-top: 10px;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: #28a745; /* Verde para ação de "Gravar" */
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.1s;
-}
-
-.btn-primary:hover {
-    background-color: #218838;
-}
-
-.btn-primary:active {
-    transform: translateY(1px);
-}
-
-/* Estilo da Tabela de Dados (h:dataTable) */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.table-header {
-    background-color: #007bff;
-    color: white;
-    text-align: left;
-    padding: 12px 15px;
-    font-weight: 600;
-}
-
-.data-table th, .data-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-}
-
-/* Estilos de linha alternados para melhor leitura */
-.table-row-even {
-    background-color: #f9f9f9;
-}
-
-.table-row-odd {
-    background-color: #ffffff;
-}
-
-.data-table tr:hover {
-    background-color: #e0f7fa; /* Realça a linha ao passar o mouse */
-}
-
-.listagem-info {
-    font-style: italic;
-    color: #777;
     margin-bottom: 10px;
 }
 
-/* Media Query para Responsividade */
-@media (max-width: 800px) {
-    .form-group {
-        flex: 1 1 calc(50% - 20px); /* 2 colunas em tablets */
-    }
+/* Container principal */
+#MenuPedidos {
+    background: rgba(255, 255, 255, 0.90);
+    width: 85%;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 12px;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 0 20px rgba(0,0,0,0.35);
 }
 
-@media (max-width: 550px) {
-    .form-group {
-        flex: 1 1 100%; /* 1 coluna em smartphones */
-        min-width: unset;
+/* ============================= */
+/*         TABELA DO CARDÁPIO    */
+/* ============================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+h\\:dataTable, .dataTable {
+    width: 100%;
+    border: 2px solid #d62828;
+}
+
+h\\:column {
+    padding: 12px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #ffe699;
+}
+
+table tr:nth-child(even) {
+    background-color: #fff6cc;
+}
+
+table th {
+    background-color: #d62828;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    color: #333;
+}
+
+/* ============================= */
+/*           BOTÕES              */
+/* ============================= */
+
+h\\:commandButton, button {
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 2px solid #d62828;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+h\\:commandButton:hover {
+    background-color: #ffdd33;
+    transform: scale(1.04);
+}
+
+/* ============================= */
+/*      CAMPOS DE TEXTO          */
+/* ============================= */
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 6px;
+    border: 2px solid #d62828;
+    width: 250px;
+    margin: 5px 0 15px 10px;
+}
+
+/* ============================= */
+/*     LISTA DE PEDIDOS          */
+/* ============================= */
+
+#listaProdutos {
+    margin-top: 20px;
+}
+
+#listaProdutos table {
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 10px;
+}
+
+/* ícone de deletar */
+h\\:graphicImage {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+h\\:graphicImage:hover {
+    transform: scale(1.2);
+}
+
+/* ============================= */
+/*  RESPONSIVO                   */
+/* ============================= */
+
+@media (max-width: 768px) {
+    #MenuPedidos {
+        width: 95%;
+        padding: 15px;
     }
-    .container {
-        margin: 20px 10px;
-        padding: 10px;
+
+    table td, table th {
+        font-size: 13px;
+    }
+
+    input[type="text"] {
+        width: 90%;
     }
 }
