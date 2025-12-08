@@ -16,6 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h:form id = "MenuPedidos">
             
             <h2>Cardápio</h2>
+            <!-- dataTable para exibir os itens do cardápio de acordo com o banco de dados, facilitando caso itens sejam adicionados -->
             <h:dataTable value="#{pedidosController.cardapio}" var="ItemAtual" id="Cardápio">
                 
                 <h:column>
@@ -23,7 +24,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </h:column>
                 
                 <h:column>
-                    <h:outputLabel>#{ItemAtual.getnItem()}</h:outputLabel> <!-- pode ser que o get esteja errado mas vale a pena testar-->
+                    <h:outputLabel>#{ItemAtual.getnItem()}</h:outputLabel>
                 </h:column>
                 
                 <h:column>
@@ -39,18 +40,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </h:column>
                 
             </h:dataTable>
-            <h:commandButton value="Escolher Itens" action="#{pedidosController.finalizarPedido}" /> <!--não deveria ser um botão mas adicionado no preço-->
+            <h:commandButton value="Escolher Itens" action="#{pedidosController.finalizarPedido}" /> <!-- botão para adicionar os itens à criação do pedido -->
             <div/>
             
             <h3>Organização de Pedido</h3>
-            
+            <!-- inserção dos valores para a criação do pedido, como o nome do cliente e o valor decidido pela adição dos preços dos itens no cardápio-->
             <h:outputLabel>Nome do CLiente:</h:outputLabel>
             <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
             <br/>
             
             <h:outputLabel>Valor total:</h:outputLabel>
-            <h:outputLabel value="R$ #{pedidosController.dadosPed.valorTotal}" />
-            <!--tá funcionando porém ele não limpa após o cadastro, o valor não é cadastrado e continua aumentando após o pedido ser concluído-->
+            <h:outputLabel value="#{pedidosController.dadosPed.valorTotal}">
+                <f:convertNumber type="currency" currencySymbol="R$ " maxFractionDigits="2" minFractionDigits="2"/> 
+                <!-- converte em valor monetário e não passa de duas casas decimais -->
+            </h:outputLabel>
             <br/>
             
             <h:outputLabel>Infos Adicionais:</h:outputLabel>
@@ -75,7 +78,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     
                 <h:column>
                     <f:facet name="header"><h:outputLabel>Valor: </h:outputLabel></f:facet>
-                    <h:outputLabel>R$ #{PAtual.valorTotal}</h:outputLabel>
+                    <h:outputLabel value="#{PAtual.valorTotal}">
+                         <f:convertNumber type="currency" currencySymbol="R$ " maxFractionDigits="2" minFractionDigits="2"/>
+                    </h:outputLabel>
                 </h:column>
                 
                 <h:column>
