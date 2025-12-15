@@ -18,6 +18,113 @@ ADD GENERATED ALWAYS AS IDENTITY;
 
 public class ServicosLanchonete {
     
+    //Sessão dps 
+    
+    //cadastro de clientes
+    public int cadastrarCliente(DadosCliente dados){
+        try {
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "INSERT INTO sistemalanchonete.cliente (nome, endereço, email, senha) VALUES (?,?,?,?) RETURNING clienteid";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            p.setString(1, dados.getNome());
+            p.setString(2, dados.getEndereço());
+            p.setString(3, dados.getEmail());
+            p.setString(4, dados.getSenha());
+            
+            int exeUpdate = p.executeUpdate();
+            con.close();
+            return exeUpdate;
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return 0;
+    }
+    
+    //listagem de clientes
+    public List<DadosCliente> listaClientes(){
+        try {
+            List<DadosCliente> retorno = new ArrayList<>();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.cliente ORDER BY clienteid DESC";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            ResultSet r = p.executeQuery();
+            while (r.next()) {
+                    DadosCliente dados = new DadosCliente();
+                    
+                    dados.setNome(r.getString("nome"));
+                    dados.setEndereço(r.getString("endereço"));
+                    dados.setEmail(r.getString("email"));
+                    dados.setSenha(r.getString("senha"));
+                    
+                    
+                    //tava faltando somente esse setId pra armazenar o id os funcionários
+                    dados.setId(r.getInt("clienteid"));
+                    
+                    retorno.add(dados);
+            }
+            con.close();
+            return retorno;
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+        return null;
+    }
+    
+    //método para excluir clientes
+    public void deletarCliente(int idC){
+        try {
+            if(idC > 0){
+                Conexao c = new Conexao();
+                Connection con = c.obterConexao();
+                String SQL = "DELETE FROM sistemalanchonete.cliente WHERE clienteid=?";
+                PreparedStatement p = con.prepareStatement(SQL);
+                
+                p.setInt(1, idC);
+                p.executeUpdate();
+                con.close();
+            } 
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+    }
+    
+    //codigo para atualização do cliente
+    public void atualizarDadosCliente(DadosCliente dados) {
+        try {
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "UPDATE sistemalanchonete.cliente "
+                    + " set nome = ?, endereço = ?, email = ?,"
+                    + " senha = ? WHERE clienteid = ?";
+            PreparedStatement p = con.prepareStatement(SQL);
+            
+            p.setString(1, dados.getNome());
+            p.setString(2, dados.getEndereço());
+            p.setString(3, dados.getEmail());
+            p.setString(4, dados.getSenha());
+            
+            p.setInt(5, dados.getId());
+            
+            ResultSet r = p.executeQuery();
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
+            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
     //Sessão de Pedidos
     
     //cadastro de funcionarios para o banco de dados
@@ -42,8 +149,8 @@ public class ServicosLanchonete {
                                                     //  }
                                                     //  con.close();
                                                     //  return 0;
-        } catch (SQLException ex) {                 //} catch (SQLException ex) {
-            System.err.println("Erro na conexão");  //  System.err.println("Erro na conexão");
+        } catch (SQLException ex) {
+            System.err.println("Erro na conexão");
             System.getLogger(ServicosLanchonete.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         return 0;
