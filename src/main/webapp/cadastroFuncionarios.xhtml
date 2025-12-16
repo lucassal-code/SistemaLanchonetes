@@ -140,7 +140,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </h:column>
                 
                 <h:column>
-                    <h:commandLink actionListener="#{cadastro.apagarDados(CAtual.id)}" style="border: none;">
+                    <h:commandLink actionListener="#{cadastro.apagarDadosCliente(CAtual.id)}" style="border: none;">
                         <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
                             <f:ajax execute="@this" render="listaClientes" event="click" />
                         </h:graphicImage>
