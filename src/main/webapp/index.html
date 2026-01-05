@@ -8,14 +8,14 @@
     </head>
     <body>
         <main class="container">
-            <form>
+            <form action="login" method="post"> <!-- adicionado ações e o metodo pro servlet, assim como nomes pros inputs -->
                 <h1>Login na Lanchonete</h1>
                 <div class="input-box">
-                    <input placeholder="Usuário" type="email">
+                    <input name="user" placeholder="Usuário" type="email"> 
                     <i class="bx bxs-user"></i>
                 </div>
                 <div class="input-box">
-                    <input placeholder="Senha" type="password">
+                    <input name="senha" placeholder="Senha" type="password">
                     <i class="bx bxs-lock-alt"></i>
                 </div>
                 

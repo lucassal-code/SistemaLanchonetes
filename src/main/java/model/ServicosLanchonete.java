@@ -123,6 +123,43 @@ public class ServicosLanchonete {
         }
     }
     
+    public DadosCliente buscarClientePorEmailESenha(String email, String senha) {
+
+    DadosCliente cliente = null;
+    String SQL = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+
+    try {//tava dando erro pq ele so suporta o try basico, esse so trata o erro
+        Conexao c = new Conexao();
+        Connection con = c.obterConexao();
+
+        try (PreparedStatement ps = con.prepareStatement(SQL)) {//try-with-resources: trata o erro e fecha os recursos
+
+            ps.setString(1, email);
+            ps.setString(2, senha);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cliente = new DadosCliente();
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setSenha(rs.getString("senha"));
+            }
+        }
+
+        con.close();
+
+    } catch (SQLException ex) {
+        System.err.println("Erro na conexão");
+        Logger.getLogger(ServicosLanchonete.class.getName())
+              .log(Level.SEVERE, null, ex);
+    }
+
+    return cliente;
+}
+
+    
     
     
     //Sessão de Pedidos
