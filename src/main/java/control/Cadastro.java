@@ -57,8 +57,7 @@ public class Cadastro implements Serializable{
     
     public void alterarFunc(int porId){
         ServicosLanchonete s = new ServicosLanchonete();
-        this.dadosFunc=s.consultarPorId_Func(porId);
-        System.out.println("-----------------MODIFICAR ALUNO. ID do aluno: "+porId);
+        this.dadosFunc = s.consultarPorId_Func(porId);
         this.listaFunc=s.listaFuncionarios();
     }    
     
@@ -91,9 +90,8 @@ public class Cadastro implements Serializable{
     
     public void alterarCli(int porId){
         ServicosLanchonete s = new ServicosLanchonete();
-        this.dadoscli=s.consultarPorId_Cliente(porId);
-        System.out.println("-----------------MODIFICAR ALUNO. ID do aluno: "+porId);
-        this.listaClientes=s.listaClientes();
+        this.dadoscli = s.consultarPorId_Cliente(porId);
+        this.listaClientes = s.listaClientes();
     } 
 
     //mensagem

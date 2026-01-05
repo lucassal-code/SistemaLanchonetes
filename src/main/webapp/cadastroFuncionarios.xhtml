@@ -96,6 +96,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     </h:commandLink>
                 </h:column>
                 
+                <h:column>
+                    <h:commandLink actionListener="#{cadastro.alterarFunc(FAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="atualizar.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaFunc" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
             </h:dataTable>
         </h:form>
         

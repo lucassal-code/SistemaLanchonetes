@@ -300,7 +300,7 @@ public class ServicosLanchonete {
             p.setDouble(6, dados.getSalario());
             p.setString(7, dados.getEmail());
             
-            p.setInt(9, dados.getId());
+            p.setInt(8, dados.getId());
             
             p.executeUpdate();
             p.close();
@@ -416,7 +416,7 @@ public class ServicosLanchonete {
             p.setDouble(2, dados.getValorTotal());
             p.setString(3, dados.getInfoAdd());    
             
-            p.setInt(9, dados.getNumPedido());
+            p.setInt(4, dados.getNumPedido());
             
             p.executeUpdate();
             p.close();

@@ -97,6 +97,12 @@ public class PedidosController implements Serializable {
         this.listaPedidos = s.listaPedidos();
         this.mensagem="Pedido "+n+" removido";
     }
+    
+//    public void alterarPed(int porId){
+//        ServicosLanchonete s = new ServicosLanchonete();
+//        this.dadosPed = s.atualizarDadosPedido(porId);
+//        this.listaFunc=s.listaFuncionarios();
+//    }    
 
     //mensagem
     public String getMensagem() {
