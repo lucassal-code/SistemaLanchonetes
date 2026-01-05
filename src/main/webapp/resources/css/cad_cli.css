@@ -1,0 +1,102 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* FUNDO */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/areaped.jpg');
+    background-size: cover;
+    background-position: center; 
+}
+
+/* CONTAINER DO FORM */
+form {
+    background-color: #fff5e6;
+    border: 2px solid #ff9900;
+    border-radius: 12px;
+    padding: 30px 35px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* TÍTULO */
+
+/* LABELS */
+label {
+    display: block;
+    color: #b30000;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+/* INPUTS */
+input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ff9900;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #cc0000;
+    box-shadow: 0 0 6px rgba(204, 0, 0, 0.4);
+}
+
+/* BOTÃO */
+input[type="submit"] {
+    width: 100%;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff3300;
+    transform: scale(1.03);
+}
+
+/* LINK VOLTAR */
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ff6600;
+    transition: 0.3s;
+}
+
+.register-link a:hover {
+    color: #cc0000;
+    text-decoration: underline;
+}
+
+/* RESPONSIVO */
+@media (max-width: 480px) {
+    form {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
