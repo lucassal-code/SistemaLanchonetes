@@ -429,6 +429,33 @@ public class ServicosLanchonete {
         }
     }
     
+    public DadosPedidos consultarPorId_Ped(int idPed) {
+        try {
+            DadosPedidos retorno = new DadosPedidos();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.pedidos WHERE numpedido = ?";
+            PreparedStatement p = con.prepareStatement(SQL);
+            p.setInt(1, idPed);
+            ResultSet r = p.executeQuery();
+            
+            if (r.next()) {
+                retorno.setNomeCliente(r.getString("nomecliente"));
+                retorno.setValorTotal(r.getDouble("valor"));
+                retorno.setInfoAdd(r.getString("infoadicionais"));
+                
+                retorno.setNumPedido(r.getInt("numpedido"));
+            }
+            con.close();
+            
+            return retorno;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     //método para deletar pedidos
     public void deletarPedido(int nP){
         try {

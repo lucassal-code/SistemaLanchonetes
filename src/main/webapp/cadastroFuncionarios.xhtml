@@ -164,6 +164,72 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 </h:column>
                 
             </h:dataTable>
+            
+            <h3>Organização de Pedido</h3>
+            <h:outputLabel>N° Pedido:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.numPedido}" />
+            <br/>
+            
+            <h:outputLabel>Nome do Cliente:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.nomeCliente}" />
+            <br/>
+            
+            <h:outputLabel>Valor total:</h:outputLabel>
+            <h:outputLabel value="#{pedidosController.dadosPed.valorTotal}">
+                <f:convertNumber type="currency" currencySymbol="R$ " maxFractionDigits="2" minFractionDigits="2"/> 
+                <!-- converte em valor monetário e não passa de duas casas decimais -->
+            </h:outputLabel>
+            <br/>
+            
+            <h:outputLabel>Infos Adicionais:</h:outputLabel>
+            <h:inputText value="#{pedidosController.dadosPed.infoAdd}" />
+            <br/>
+            
+            <h:commandButton value="Finalizar Pedido" actionListener="#{pedidosController.criarPedido()}"/>
+            <div/>
+            
+            <h4>Listagem de Pedidos</h4>
+            <h:dataTable value="#{pedidosController.listaPedidos}" var="PAtual" id="listaProdutos">
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>N° </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.numPedido}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Nome do Cliente: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.nomeCliente}</h:outputLabel>
+                </h:column>
+                    
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Valor: </h:outputLabel></f:facet>
+                    <h:outputLabel value="#{PAtual.valorTotal}">
+                         <f:convertNumber type="currency" currencySymbol="R$ " maxFractionDigits="2" minFractionDigits="2"/>
+                    </h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header"><h:outputLabel>Informações: </h:outputLabel></f:facet>
+                    <h:outputLabel>#{PAtual.infoAdd}</h:outputLabel>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{pedidosController.apagarPedido(PAtual.numPedido)}" style="border: none;">
+                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaProdutos" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{pedidosController.alterarPed(PAtual.numPedido)}" style="border: none;">
+                        <h:graphicImage library="images" name="atualizar.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaProdutos" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
         </h:form>
     </h:body>
 </html>
