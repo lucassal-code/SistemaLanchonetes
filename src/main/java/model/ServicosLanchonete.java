@@ -18,7 +18,7 @@ ADD GENERATED ALWAYS AS IDENTITY;
 
 public class ServicosLanchonete {
     
-    //Sessão dps 
+    //Sessão Cliente
     
     //cadastro de clientes
     public int cadastrarCliente(DadosCliente dados){
@@ -114,7 +114,9 @@ public class ServicosLanchonete {
             
             p.setInt(5, dados.getId());
             
-            ResultSet r = p.executeQuery();
+            p.executeUpdate();
+            p.close();
+            
             con.close();
             
         } catch (SQLException ex) {
@@ -123,10 +125,40 @@ public class ServicosLanchonete {
         }
     }
     
+    //consulta por id para alterar depois
+    public DadosCliente consultarPorId_Cliente(int idCliente) {
+        try {
+            DadosCliente retorno = new DadosCliente();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.cliente WHERE clienteid = ?";
+            PreparedStatement p = con.prepareStatement(SQL);
+            p.setInt(1, idCliente);
+            ResultSet r = p.executeQuery();
+            
+            if (r.next()) {
+                retorno.setNome(r.getString("nome"));
+                retorno.setEndereço(r.getString("endereço"));
+                retorno.setEmail(r.getString("email"));
+                retorno.setSenha(r.getString("senha"));
+                
+                retorno.setId(r.getInt("clienteid"));
+            }
+            con.close();
+            
+            return retorno;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    //procura por email e senha pra logar da pagina de login pro menu
     public DadosCliente buscarClientePorEmailESenha(String email, String senha) {
 
     DadosCliente cliente = null;
-    String SQL = "SELECT * FROM cliente WHERE email = ? AND senha = ?";
+    String SQL = "SELECT * FROM sistemalanchonete.cliente WHERE email = ? AND senha = ?";
 
     try {//tava dando erro pq ele so suporta o try basico, esse so trata o erro
         Conexao c = new Conexao();
@@ -141,10 +173,11 @@ public class ServicosLanchonete {
 
             if (rs.next()) {
                 cliente = new DadosCliente();
-                cliente.setId(rs.getInt("id"));
+                cliente.setId(rs.getInt("clienteid"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setEmail(rs.getString("email"));
                 cliente.setSenha(rs.getString("senha"));
+                cliente.setEndereço(rs.getString("endereço"));
             }
         }
 
@@ -162,7 +195,7 @@ public class ServicosLanchonete {
     
     
     
-    //Sessão de Pedidos
+    //Sessão funcionários
     
     //cadastro de funcionarios para o banco de dados
     public int cadastrarFuncionarios(DadosFuncionarios dados){
@@ -269,13 +302,48 @@ public class ServicosLanchonete {
             
             p.setInt(9, dados.getId());
             
-            ResultSet r = p.executeQuery();
+            p.executeUpdate();
+            p.close();
+            
             con.close();
             
         } catch (SQLException ex) {
             System.err.println("Erro na conexão");
             Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    //consulta por id para alterar depois
+    public DadosFuncionarios consultarPorId_Func(int idFunc) {
+        try {
+            DadosFuncionarios retorno = new DadosFuncionarios();
+            Conexao c = new Conexao();
+            Connection con = c.obterConexao();
+            String SQL = "SELECT * FROM sistemalanchonete.funcionarios WHERE id = ?";
+            PreparedStatement p = con.prepareStatement(SQL);
+            p.setInt(1, idFunc);
+            ResultSet r = p.executeQuery();
+            
+            if (r.next()) {
+                retorno.setNome(r.getString("nome"));
+                retorno.setCpf(r.getString("cpf"));
+                retorno.setTelefone(r.getString("telefone"));
+                retorno.setEndereco(r.getString("endereco"));
+                retorno.setCargo(r.getString("cargo"));
+                retorno.setSalario(r.getDouble("salario"));
+                retorno.setEmail(r.getString("email"));
+                
+                
+                retorno.setId(r.getInt("id"));
+            }
+            con.close();
+            
+            return retorno;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicosLanchonete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     
@@ -350,7 +418,9 @@ public class ServicosLanchonete {
             
             p.setInt(9, dados.getNumPedido());
             
-            ResultSet r = p.executeQuery();
+            p.executeUpdate();
+            p.close();
+            
             con.close();
             
         } catch (SQLException ex) {

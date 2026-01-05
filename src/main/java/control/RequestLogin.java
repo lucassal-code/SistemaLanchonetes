@@ -36,12 +36,12 @@ public class RequestLogin extends HttpServlet {
         DadosCliente cliente = service.buscarClientePorEmailESenha(email, senha);
 
         if (cliente != null) {
-            // login OK → salva na sessão
+            //login OK -> salva na sessão
             req.getSession().setAttribute("clienteLogado", cliente);
 
-            resp.sendRedirect("home.xhtml");
+            resp.sendRedirect("MenuPedidos.xhtml");
         } else {
-            // login inválido
+            //login inválido
             resp.sendRedirect("index.html?erro=true");
         }
     }

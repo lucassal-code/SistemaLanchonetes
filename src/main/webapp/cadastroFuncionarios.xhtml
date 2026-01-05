@@ -101,25 +101,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         
         <h:form id = "ClientesCadastrados">
             
-            <h:outputLabel>Nome:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadoscli.nome}" /> <!-- temporário, depois a tela será passada para o login -->
-            <br/>
-            
-            <h:outputLabel>Endereço:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadoscli.endereço}" />
-            <br/>
-            
-            <h:outputLabel>Email:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadoscli.email}" />
-            <br/>
-            
-            <h:outputLabel>Senha:</h:outputLabel>
-            <h:inputText value="#{cadastro.dadoscli.senha}" />
-            <br/>
-            
-            <h:commandButton value="Gravar Cliente" actionListener = "#{cadastro.cadastrarCliente()}"/>
-            <br/>
-            
             <h2>Lista de Clientes</h2>
             <div>Listagem:</div>
             <h:dataTable value="#{cadastro.listaClientes}" var="CAtual" id="listaClientes" >
@@ -141,6 +122,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 
                 <h:column>
                     <h:commandLink actionListener="#{cadastro.apagarDadosCliente(CAtual.id)}" style="border: none;">
+                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                            <f:ajax execute="@this" render="listaClientes" event="click" />
+                        </h:graphicImage>
+                    </h:commandLink>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink actionListener="#{cadastro.alterarCli(CAtual.id)}" style="border: none;">
                         <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
                             <f:ajax execute="@this" render="listaClientes" event="click" />
                         </h:graphicImage>

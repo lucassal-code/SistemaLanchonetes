@@ -55,6 +55,13 @@ public class Cadastro implements Serializable{
         this.mensagem1 = "Funcionario "+porId+" apagado com sucesso!";
     }
     
+    public void alterarFunc(int porId){
+        ServicosLanchonete s = new ServicosLanchonete();
+        this.dadosFunc=s.consultarPorId_Func(porId);
+        System.out.println("-----------------MODIFICAR ALUNO. ID do aluno: "+porId);
+        this.listaFunc=s.listaFuncionarios();
+    }    
+    
     //cadastro de clientes
     public void cadastrarCliente() {
         ServicosLanchonete s = new ServicosLanchonete();
@@ -74,13 +81,20 @@ public class Cadastro implements Serializable{
         this.listaClientes = s.listaClientes();
     }
     
-    //apaga o funcionario da tabela
+    //apaga o cliente
     public void apagarDadosCliente(int porId){
         ServicosLanchonete s = new ServicosLanchonete();
         s.deletarCliente(porId);
         this.listaClientes = s.listaClientes();
         this.mensagem2 = "Cliente "+porId+" apagado com sucesso!";
     }
+    
+    public void alterarCli(int porId){
+        ServicosLanchonete s = new ServicosLanchonete();
+        this.dadoscli=s.consultarPorId_Cliente(porId);
+        System.out.println("-----------------MODIFICAR ALUNO. ID do aluno: "+porId);
+        this.listaClientes=s.listaClientes();
+    } 
 
     //mensagem
     public String getMensagem1() {
