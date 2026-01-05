@@ -101,6 +101,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         
         <h:form id = "ClientesCadastrados">
             
+            <h:outputLabel>Nome:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.nome}" /> <!-- não necessita de </h:inputText> para fechar pois não possui componentes filhos -->
+            <br/>
+            
+            <h:outputLabel>E-mail:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.email}" />
+            <br/>
+            
+            <h:outputLabel>Senha:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.senha}" />
+            <br/>
+            
+            <h:outputLabel>Endereço:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.endereço}" />
+            <br/>
+            
+            <h:commandButton value="Cadastrar-se" actionListener="#{cadastro.cadastrarCliente()}"/>
+            <br/>
+            
             <h2>Lista de Clientes</h2>
             <div>Listagem:</div>
             <h:dataTable value="#{cadastro.listaClientes}" var="CAtual" id="listaClientes" >
@@ -130,7 +149,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 
                 <h:column>
                     <h:commandLink actionListener="#{cadastro.alterarCli(CAtual.id)}" style="border: none;">
-                        <h:graphicImage library="images" name="deletarDados.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
+                        <h:graphicImage library="images" name="atualizar.png" width="5%" height="5%" onmouseover="this.style.cursor = 'pointer'" >
                             <f:ajax execute="@this" render="listaClientes" event="click" />
                         </h:graphicImage>
                     </h:commandLink>
