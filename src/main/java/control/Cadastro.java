@@ -78,6 +78,9 @@ public class Cadastro implements Serializable{
         }
 
         this.listaClientes = s.listaClientes();
+        
+        //só pra limpar ao executar
+        this.dadoscli = new DadosCliente();
     }
     
     //apaga o cliente
