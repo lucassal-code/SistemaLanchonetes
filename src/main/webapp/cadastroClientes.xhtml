@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Cadaste-se</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/cad_cli.css" /> <!-- css pro estilo da pagina -->
+    </h:head>
+    <h:body>
+        
+        <br/><br/>
+        <h:form id = "ClienteCadastrado">
+            
+            <h:outputLabel>Nome:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.nome}" /> <!-- não necessita de </h:inputText> para fechar pois não possui componentes filhos -->
+            <br/>
+            
+            <h:outputLabel>E-mail:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.email}" />
+            <br/>
+            
+            <h:outputLabel>Senha:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.senha}" />
+            <br/>
+            
+            <h:outputLabel>Endereço:</h:outputLabel>
+            <h:inputText value="#{cadastro.dadoscli.endereço}" />
+            <br/>
+            
+            <h:commandButton value="Cadastrar-se" actionListener="#{cadastro.cadastrarCliente()}"/>
+            <br/>
+            
+            <div class="register-link">
+                <a href="http://localhost:9090/SistemaLanchoneteWeb/login">Voltar</a>
+            </div>
+            
+        </h:form>
+    </h:body>
+</html>
+

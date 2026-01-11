@@ -1,181 +1,152 @@
-/* ---------------------------------------------------
-   Global Reset & Layout Defaults
------------------------------------------------------ */
+/* ===== RESET BÁSICO ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, sans-serif;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* ===== FUNDO GERAL ===== */
 body {
-    background-color: #f4f8fc; /* soft light blue background */
-    color: #333;
-    line-height: 1.6;
+    background: linear-gradient(135deg, #FFD93D, #FF9F1C);
     padding: 20px;
+    color: #4A1C00;
 }
 
-/* ---------------------------------------------------
-   Forms & Input Fields
-   JSF renders <h:inputText> as standard <input type="text">
------------------------------------------------------ */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-textarea,
-select {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 4px;
-    border: 1px solid #bfcfe8;
-    background-color: #ffffff;
-    transition: all 0.25s ease-in-out;
-    font-size: 15px;
+/* ===== TÍTULOS ===== */
+h1 {
+    text-align: center;
+    color: #C1121F;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #FFF3B0;
 }
 
-/* Highlight on hover */
-input[type="text"]:hover,
-input[type="password"]:hover,
-input[type="email"]:hover,
-input[type="number"]:hover,
-textarea:hover,
-select:hover {
-    border-color: #66a3e0;
+h2, h3, h4 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #9D0208;
+    border-left: 6px solid #FF7B00;
+    padding-left: 10px;
 }
 
-/* Blue glow on focus */
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-textarea:focus,
-select:focus {
-    border-color: #5599dd;
-    box-shadow: 0 0 6px rgba(85, 153, 221, 0.4);
+/* ===== MENSAGENS ===== */
+label, .ui-outputlabel {
+    font-weight: bold;
+}
+
+h\\:outputLabel[style*="red"] {
+    background-color: #FFE5E5;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+/* ===== FORMULÁRIOS ===== */
+form {
+    background-color: #FFF3B0;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ===== LABELS ===== */
+h\\:outputLabel {
+    display: inline-block;
+    width: 150px;
+    margin-top: 10px;
+    color: #7A1E00;
+}
+
+/* ===== CAMPOS DE TEXTO ===== */
+input[type="text"] {
+    padding: 8px;
+    width: 250px;
+    border-radius: 6px;
+    border: 2px solid #FF7B00;
+    margin-top: 6px;
+}
+
+input[type="text"]:focus {
     outline: none;
+    border-color: #C1121F;
+    box-shadow: 0 0 6px rgba(193,18,31,0.6);
 }
 
-/* Disabled inputs */
-input:disabled,
-select:disabled,
-textarea:disabled {
-    background-color: #e9eef5;
-    opacity: 0.7;
-}
-
-/* ---------------------------------------------------
-   Labels (JSF h:outputLabel)
------------------------------------------------------ */
-label {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: 600;
-    color: #355c7d;
-}
-
-/* ---------------------------------------------------
-   Buttons (JSF h:commandButton / h:button)
------------------------------------------------------ */
+/* ===== BOTÕES ===== */
+input[type="submit"], 
 button,
-input[type="submit"],
-input[type="button"],
-input[type="reset"] {
-    background-color: #4d8cd8;
-    color: #fff;
-    padding: 10px 20px;
+.ui-commandbutton {
+    background: linear-gradient(135deg, #FF7B00, #C1121F);
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 10px 18px;
+    margin-top: 15px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
-    font-weight: 600;
-    transition: background-color 0.25s ease-in-out;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Hover */
-button:hover,
 input[type="submit"]:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover {
-    background-color: #3a7ac3;
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-/* Active press */
-button:active,
-input[type="submit"]:active {
-    background-color: #2f6aa9;
-}
-
-/* Disabled buttons */
-button:disabled,
-input[type="submit"]:disabled {
-    background-color: #aac6e8;
-    cursor: not-allowed;
-}
-
-/* ---------------------------------------------------
-   JSF Messages (h:messages / h:message)
------------------------------------------------------ */
-.jsf-message,
-.ui-message {
-    margin: 6px 0;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-/* Info */
-.jsf-message-info {
-    background: #d9ebff;
-    border-left: 4px solid #4d8cd8;
-}
-
-/* Warning */
-.jsf-message-warn {
-    background: #fff6d9;
-    border-left: 4px solid #e8c34d;
-}
-
-/* Error */
-.jsf-message-error {
-    background: #ffe2e2;
-    border-left: 4px solid #d44d4d;
-}
-
-/* ---------------------------------------------------
-   Panels, Boxes (h:panelGroup, h:panelGrid)
------------------------------------------------------ */
-.panel,
-.ui-panel {
-    background-color: #ffffff;
-    border: 1px solid #dae3f0;
-    padding: 20px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-/* ---------------------------------------------------
-   Tables (JSF h:dataTable)
------------------------------------------------------ */
+/* ===== TABELAS ===== */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin-top: 15px;
+    background-color: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-table thead th {
-    background-color: #e5effb;
-    color: #2d4f6c;
+th {
+    background-color: #C1121F;
+    color: white;
     padding: 10px;
     text-align: left;
-    border-bottom: 2px solid #c7d9ee;
+    font-size: 14px;
 }
 
-table tbody td {
+td {
     padding: 10px;
-    border-bottom: 1px solid #e2e8f3;
+    border-bottom: 1px solid #FFD93D;
+    color: #4A1C00;
 }
 
-table tbody tr:hover {
-    background-color: #f0f6ff;
+tr:nth-child(even) {
+    background-color: #FFF7CC;
+}
+
+tr:hover {
+    background-color: #FFE066;
+}
+
+/* ===== ÍCONES (EDITAR / DELETAR) ===== */
+img {
+    transition: transform 0.2s;
+}
+
+img:hover {
+    transform: scale(1.2);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    h\\:outputLabel {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
 }
